@@ -9,11 +9,16 @@ assignees: ''
 
 ## What we did:
 #### Front
-
+[X] 1.
+[X] 2.
 #### Back
-
+[X] 1.
+[X] 2.
 
 ## What to do:
 #### Front
-
+[]1.
+[]2.
 #### Back
+[]1.
+[]2.
