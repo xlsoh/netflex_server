@@ -1,7 +1,7 @@
 ---
-name: "[Retrospect] N주차 회고 - 이름"
-about: 회고할 때 사용되는 형식입니다.
-title: ''
+name: Retrospect
+about: 회고할 때 사용하는 템플릿입니다.
+title: "[Retrospect] N주차 회고 - 이름"
 labels: ''
 assignees: ''
 
