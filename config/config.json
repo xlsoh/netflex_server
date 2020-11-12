@@ -4,6 +4,7 @@
     "password": "rkd789451!",
     "database": "netflex_database",
     "host": "netflex-database.cw62ullr7uva.ap-northeast-2.rds.amazonaws.com",
+    "port": "13306",
     "dialect": "mysql"
   },
   "test": {
