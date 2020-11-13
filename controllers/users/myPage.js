@@ -4,7 +4,7 @@ module.exports = {
   get: async (req, res) => {
     try {
       const sess = req.session;
-
+      console.log(sess);
       if (sess.userid) {
         const result = await user.findOne({ where: { id: sess.userid } });
 
