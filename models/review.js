@@ -9,12 +9,6 @@ module.exports = (sequelize, DataTypes) => {
           allowNull: false,
         },
       });
-      models.review.belongsTo(models.movie, {
-        onDelete: 'cascade',
-        foreignKey: {
-          allowNull: false,
-        },
-      });
       models.review.hasMany(models.likes, {
         foreignKey: 'reviewId',
         onDelete: 'cascade',
