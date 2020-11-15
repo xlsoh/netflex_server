@@ -20,16 +20,21 @@ module.exports = {
       movieId: {
         type: Sequelize.INTEGER,
       },
+      movieName: {
+        type: Sequelize.STRING,
+      },
       vote_count: {
         type: Sequelize.INTEGER,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW,
       },
     });
   },
