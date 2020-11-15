@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
           allowNull: false,
         },
       });
-      models.review.hasMany(models.likes, {
+      models.review.hasMany(models.like, {
         foreignKey: 'reviewId',
         onDelete: 'cascade',
       });
@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       text: DataTypes.STRING,
       userId: DataTypes.INTEGER,
       movieId: DataTypes.INTEGER,
+      movieName: DataTypes.STRING,
     },
     {
       sequelize,
