@@ -1,6 +1,7 @@
 module.exports = {
-  reviewCreate: require('./reviewCreate'),
-  reviewRead: require('./reviewRead'),
-  reviewUpdate: require('./reviewUpdate'),
-  reviewDelete: require('./reviewCreate'),
+  writeReview: require('./writeReview'),
+  findAllReview: require('./findAllReview'),
+  findAllMyReview: require('./findAllMyReview'),
+  findOneReview: require('./findOneReview'),
+  deleteReview: require('./deleteReview'),
 };
