@@ -4,4 +4,5 @@ module.exports = {
   findAllMyReview: require('./findAllMyReview'),
   findOneReview: require('./findOneReview'),
   deleteReview: require('./deleteReview'),
+  updateLikes: require('./updateLikes'),
 };

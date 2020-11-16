@@ -23,7 +23,7 @@ module.exports = {
       movieName: {
         type: Sequelize.STRING,
       },
-      vote_count: {
+      views: {
         type: Sequelize.INTEGER,
       },
       createdAt: {
