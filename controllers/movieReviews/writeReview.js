@@ -2,19 +2,11 @@ const { review } = require('../../models');
 
 module.exports = {
   post: async (req, res) => {
-    // 상의 필요
-    const {
-      title,
-      text,
-      userId,
-      reviewId /*, vote_count*/,
-      movieId,
-      movieName,
-    } = req.body;
+    const { title, text, userId, reviewId, movieId, movieName } = req.body;
 
     try {
       if (reviewId) {
-        //수정
+        //리뷰 수정
         const editedRes = await review.update(
           { title, text },
           { where: { id: reviewId } }
@@ -33,12 +25,15 @@ module.exports = {
           userId,
           movieId,
           movieName,
-          /*vote_count,*/
+          views: 0,
         });
         console.log(result);
-        res.status(200).json({ reviewId: result.id });
+        if (result) {
+          res.status(200).json({ reviewId: result.id });
+        } else {
+          res.status(404).send('작성된 리뷰가 없습니다.');
+        }
       }
-      res.status(404).send('작성된 리뷰가 없습니다.');
     } catch (err) {
       res.status(500).send(err);
     }

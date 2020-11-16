@@ -1,14 +1,17 @@
 const REVIEW = require('../../models').review;
 const USER = require('../../models').user;
+const LIKE = require('../../models').like;
 
 // 리뷰 id에 해당하는 것 조회
 module.exports = {
   get: async (req, res) => {
     const { reviewId } = req.params;
 
+    const likeRes = await LIKE.count({ where: { reviewId } });
     const result = await REVIEW.findOne({ where: { id: reviewId } });
-    console.log(result);
+
     if (result) {
+      const updatedRes = await result.increment('views');
       const { id, title, userId, createdAt, movieName, text, movieId } = result;
       // 1. userId를 통해 user Table에 nickName 가져오기
       const userRes = await USER.findOne({ where: { id: userId } });
@@ -20,6 +23,8 @@ module.exports = {
         text,
         movieId,
         movieName,
+        views: updatedRes.views + 1,
+        totalLikes: likeRes,
         nickName,
         createdAt,
       });
