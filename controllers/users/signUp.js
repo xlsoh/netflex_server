@@ -24,7 +24,6 @@ module.exports = {
         console.log(data);
         res.status(201).send(data);
       }
-      //res.status(200).send('Welcome Netflex!');
     } catch (err) {
       res.status(500).send(err);
     }
