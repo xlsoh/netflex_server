@@ -19,7 +19,7 @@ module.exports = {
         });
         res.status(200).json({ results: resArr });
       } else {
-        res.status(404).send('해당 영화는 존재하지 않습니다.');
+        res.status(204).send('해당 영화는 리뷰가 존재하지 않습니다.');
       }
     } catch (err) {
       res.status(500).send(err);
