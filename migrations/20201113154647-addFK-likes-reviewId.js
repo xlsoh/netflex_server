@@ -1,21 +1,21 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.addConstraint('likes', {
-      fields: ['reviewId'],
-      type: 'foreign Key',
-      name: 'likes_fkey_reviewId',
+    await queryInterface.addConstraint("likes", {
+      fields: ["reviewId"],
+      type: "foreign Key",
+      name: "likes_fkey_reviewId",
       references: {
-        table: 'reviews',
-        field: 'id',
+        table: "reviews",
+        field: "id",
       },
-
-      onUpdate: 'cascade',
+      onDelete: "cascade",
+      onUpdate: "cascade",
     });
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.removeConstraint('likes', 'likes_fkey_reviewId');
+    await queryInterface.removeConstraint("likes", "likes_fkey_reviewId");
   },
 };
