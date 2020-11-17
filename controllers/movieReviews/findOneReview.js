@@ -1,17 +1,19 @@
-const REVIEW = require('../../models').review;
-const USER = require('../../models').user;
-const LIKE = require('../../models').like;
+const REVIEW = require("../../models").review;
+const USER = require("../../models").user;
+const LIKE = require("../../models").like;
 
 // 리뷰 id에 해당하는 것 조회
 module.exports = {
   get: async (req, res) => {
     const { reviewId } = req.params;
-
+    console.log(reviewId);
     const likeRes = await LIKE.count({ where: { reviewId } });
+    console.log(likeRes);
     const result = await REVIEW.findOne({ where: { id: reviewId } });
+    console.log(result);
 
     if (result) {
-      const updatedRes = await result.increment('views');
+      const updatedRes = await result.increment("views");
       const { id, title, userId, createdAt, movieName, text, movieId } = result;
       // 1. userId를 통해 user Table에 nickName 가져오기
       const userRes = await USER.findOne({ where: { id: userId } });
@@ -29,7 +31,7 @@ module.exports = {
         createdAt,
       });
     } else {
-      res.status(404).send('존재하지 않는 리뷰입니다.');
+      res.status(404).send("존재하지 않는 리뷰입니다.");
     }
   },
 };
