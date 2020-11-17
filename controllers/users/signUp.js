@@ -8,15 +8,23 @@ module.exports = {
         where: { email },
         defaults: { password, nickName },
       });
+      console.log(created);
+      console.log(result);
 
       if (!created) {
-        res.status(409).send('Already exists email');
+        //이미 회원정보에 등록되어 있는 경우
+        if (password) {
+          res.status(409).send('Already exists email');
+        } else {
+          const data = await result.get({ plain: true });
+          res.status(200).send(data);
+        }
       } else {
         const data = await result.get({ plain: true });
         console.log(data);
         res.status(201).send(data);
       }
-      res.status(200).send('Welcome Netflex!');
+      //res.status(200).send('Welcome Netflex!');
     } catch (err) {
       res.status(500).send(err);
     }

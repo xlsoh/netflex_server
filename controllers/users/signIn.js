@@ -7,7 +7,6 @@ module.exports = {
 
     try {
       const result = await user.findOne({ where: { email, password } });
-
       if (result === null) {
         res.status(404).send('Invalid user or Wrong password');
       } else {

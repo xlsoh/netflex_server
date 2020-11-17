@@ -23,7 +23,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // cors는  추후 수정 예정!
-app.use(cors());
+app.use(
+  cors({
+    origin: ['http://localhost:3000'],
+    method: ['GET', 'POST'],
+    credentials: true,
+  })
+);
 
 app.use(morgan('dev'));
 
