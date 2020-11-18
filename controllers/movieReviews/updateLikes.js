@@ -1,14 +1,16 @@
-const LIKE = require('../../models').like;
+const LIKE = require("../../models").like;
 module.exports = {
   post: async (req, res) => {
     const { reviewId } = req.params;
     const { userId } = req.body;
     console.log(reviewId, userId);
+
     try {
       const [findRes, isCreated] = await LIKE.findOrCreate({
         where: { reviewId, userId },
       });
       console.log(findRes);
+      console.log(isCreated);
 
       //생성됐으면 -> 좋아요
       if (isCreated) {
@@ -23,9 +25,9 @@ module.exports = {
         const result = await LIKE.destroy({ where: { id: findRes.id } });
         console.log(result);
         if (result === 1) {
-          res.status(200).send('좋아요 취소');
+          res.status(200).send("좋아요 취소");
         } else {
-          res.status(404).send('취소할 좋아요가 없습니다.');
+          res.status(404).send("취소할 좋아요가 없습니다.");
         }
       }
     } catch (err) {

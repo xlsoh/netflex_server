@@ -3,7 +3,7 @@ const { review } = require('../../models');
 module.exports = {
   post: async (req, res) => {
     const { title, text, userId, reviewId, movieId, movieName } = req.body;
-
+    console.log(req.body);
     try {
       if (reviewId) {
         //리뷰 수정
