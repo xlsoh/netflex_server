@@ -1,17 +1,20 @@
 module.exports = {
   post: (req, res) => {
-    const sess = req.session;
+    console.log(req.body);
     const { accessToken } = req.body;
+    //const token = req.headers["authorization"];
     console.log(accessToken);
-    console.log(sess);
+    if (!accessToken) {
+      return res.status(403).send("권한이 없습니다.");
+    }
 
     try {
-      if (sess.userid || accessToken) {
+      if (accessToken) {
         req.session.destroy((err) => {
           if (err) {
             console.log(err);
           } else {
-            res.status(200).send('successfully signed out!');
+            res.status(200).send("successfully signed out!");
           }
         });
       } else {
