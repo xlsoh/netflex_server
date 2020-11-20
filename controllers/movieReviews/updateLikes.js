@@ -9,6 +9,7 @@ module.exports = {
       const [findRes, isCreated] = await LIKE.findOrCreate({
         where: { reviewId, userId },
       });
+      console.log("-----------------");
       console.log(findRes);
       console.log(isCreated);
 
